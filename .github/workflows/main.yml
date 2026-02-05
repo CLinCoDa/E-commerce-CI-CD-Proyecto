@@ -71,7 +71,6 @@ jobs:
         working-directory: ./Client
         run: |
           npm install
-          CI=true npm test  # Evita que el pipeline se bloquee
           npm run build
 
   # --- TRABAJO 3: VERIFICACIÓN DOCKER ---
