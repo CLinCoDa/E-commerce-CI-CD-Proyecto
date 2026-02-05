@@ -1,0 +1,40 @@
+# --- IDEs y Editores ---
+.vscode/
+.idea/
+*.swp
+*.iml
+.classpath
+.project
+.settings/
+.DS_Store
+
+# --- BACKEND (Java/Maven) ---
+Server/target/
+Server/*.jar
+Server/*.war
+Server/.mvn/
+Server/bin/
+# Archivos de configuración local (si decides usarlos)
+Server/src/main/resources/application-local.properties
+
+# --- FRONTEND (React/Node) ---
+Client/node_modules/
+Client/build/
+Client/dist/
+Client/.env.local
+Client/.env.development.local
+Client/.env.test.local
+Client/.env.production.local
+Client/npm-debug.log*
+Client/yarn-debug.log*
+Client/yarn-error.log*
+
+# --- DOCKER ---
+# Ignora los datos de la base de datos para que no se suban a GitHub
+mysql_data/
+.docker/
+
+# --- GENERAL ---
+.env
+*.log
+temp/
