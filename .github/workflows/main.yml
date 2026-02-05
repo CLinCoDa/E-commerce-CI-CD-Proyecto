@@ -55,6 +55,12 @@ jobs:
           SPRING_DATASOURCE_USERNAME: root
           SPRING_DATASOURCE_PASSWORD: root
 
+      - name: Upload JAR for Docker build
+        uses: actions/upload-artifact@v4
+        with:
+          name: backend-jar
+          path: Server/target/*.jar
+
   # --- TRABAJO 2: FRONTEND (React) ---
   frontend-ci:
     runs-on: ubuntu-latest
@@ -79,9 +85,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+      
+      - name: Download JAR
+        uses: actions/download-artifact@v4
+        with:
+          name: backend-jar
+          path: Server/target/  # Lo ponemos donde el Dockerfile lo espera
+          
       - name: Build with Docker Compose
         run: docker compose build
-
+        
   # --- TRABAJO 4: DEPLOY  ---
   deploy-to-cloud:
     needs: [docker-check]
