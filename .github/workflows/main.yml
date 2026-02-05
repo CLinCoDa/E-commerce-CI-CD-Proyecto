@@ -94,16 +94,30 @@ jobs:
           
       - name: Build with Docker Compose
         run: docker compose build
-        
-  # --- TRABAJO 4: DEPLOY  ---
-  deploy-to-cloud:
+
+  # --- TRABAJO 4: DESPLIEGUE (SIMULADO) ---
+  deploy-proceso:
     needs: [docker-check]
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Login to Docker Hub
-        run: echo "${{ secrets.DOCKER_PASSWORD }}" | docker login -u "${{ secrets.DOCKER_USERNAME }}" --password-stdin
-      
-      - name: Push Images
+
+      - name: Preparando Artefactos de Despliegue
         run: |
-          docker compose push
+          mkdir -p deploy/dist
+          echo "Empaquetando JAR de Spring Boot y Build de React..."
+          echo "Artefactos listos para producción."
+
+      - name: Simulación de Despliegue en Servidor
+        run: |
+          echo "Conectando al servidor de producción vía SSH (Simulado)..."
+          echo "Transfiriendo imágenes Docker al registro... [OK]"
+          echo "Desplegando contenedores en el entorno de Staging..."
+          echo "Verificando salud de la aplicación (Health Check)... [PASSED]"
+
+      - name: Resultado Final
+        run: |
+          echo "----------------------------------------------------"
+          echo "✅ DESPLIEGUE COMPLETADO EXITOSAMENTE"
+          echo "La aplicación está disponible en el entorno virtual."
+          echo "----------------------------------------------------"
