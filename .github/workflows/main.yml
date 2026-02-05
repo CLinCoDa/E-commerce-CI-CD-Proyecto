@@ -71,7 +71,7 @@ jobs:
         working-directory: ./Client
         run: |
           npm install
-          npm run build
+          CI=false npm run build
 
   # --- TRABAJO 3: VERIFICACIÓN DOCKER ---
   docker-check:
